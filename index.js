@@ -25,18 +25,16 @@ bot.login(token);
 
 bot.on("ready", () => {
     console.log("FiveM bot online.");
-    getDiscord("111642388417478656")
-        .then(user => {
-            console.log(user);
-        });
 });
 
 app.use(express.json());
 
 app.get("/", function(req, res) {
     //when we get an http get request to the root/homepage
-    res.send("Hello World");
-    res.send("req");
+    getDiscord("111642388417478656")
+        .then(user => {
+            res.send(user);
+        });
 });
 
 bot.on("message", msg => {
