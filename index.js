@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var http = require('http');
 var FormData = require('form-data');
+const express = require('express');
+const app = express();
 const bot = new Discord.Client();
 var version = "0.1.4 (DEVWIP)";
 var channelNames = ["bot-text"]; //All the channels where the bot will respond. Include your bot channel names (without the #)
 var serverID = "zobp74";
-
+const PORT = process.env.PORT || 3000;
 const token = process.env.FIVEMTOKEN;
 
 function embedInfo(data){
@@ -30,11 +31,13 @@ bot.on("ready", () => {
         });
 });
 
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello Worldn');
-}).listen(1337, 'fivem-discordbot.herokuapp.com');
-console.log('Server running at http://fivem-discordbot.herokuapp.com:1337/');
+app.use(express.json());
+
+app.get("/", function(req, res) {
+    //when we get an http get request to the root/homepage
+    res.send("Hello World");
+    res.send("req");
+});
 
 bot.on("message", msg => {
     if(channelNames.includes(msg.channel.name)){
@@ -58,6 +61,10 @@ bot.on("message", msg => {
             xhttp.send();
         }
     }
+});
+
+app.listen(PORT, function() {
+    console.log(`Listening on Port ${PORT}`);
 });
 //  fivem://connect/zobp74
 /*[
