@@ -42,7 +42,7 @@ app.get("/", function(req, res) {
     //when we get an http get request to the root/homepage
     getDiscord("111642388417478656")
         .then(user => {
-            res.send(user);
+            res.send(req+" == "+user);
         });
 });
 
@@ -52,7 +52,7 @@ bot.on("message", msg => {
             msg.reply("Here are some commands:\n`-help` - Shows possible commands\n`-status` - Shows player count, AOP, discord of TXDPS-RP\n`-link` - Displays useful links such as a connect link and a monotoring link.\n\n*FiveM Advanced Status Bot (5MASB) V"+version+" created by Aston Bolwell.*");
         }
 
-        if(msg.content == "-all"){
+        if(msg.content == "-status"){
             var data;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function(){
