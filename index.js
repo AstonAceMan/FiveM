@@ -11,8 +11,17 @@ const PORT = process.env.PORT || 3000;
 const token = process.env.FIVEMTOKEN;
 
 function embedInfo(data){
+    var thumbnail = 'https://servers-live.fivem.net/servers/icon/'+serverID+'/'+data['Data']['iconVersion']+'.png';
+    var players = data['Data']['clients'];
+    var aop = data['Data']['mapname'];
     var embedReturn = new Discord.MessageEmbed();
-        
+    embedReturn.setColor('#f78235');
+    embedReturn.setTitle('TXDPS-RP');
+    embedReturn.setThumbnail(thumbnail);
+    embedReturn.addFields(
+		{ name: 'Players', value: 'Some value here', inline: true },
+		{ name: 'Information', value: '>>> **Name:** `Server 1`\n**Status:** `Online`\n**Port:** `30120`\n**Players:** `'+players+'/75`\n**AOP:** `'+aop+'`\n ', inline: true }
+	)
     return embedReturn;
 }
 
@@ -40,7 +49,7 @@ app.get("/", function(req, res) {
 bot.on("message", msg => {
     if(channelNames.includes(msg.channel.name)){
         if(msg.content == "-help"){
-            msg.reply("Here are some commands:\n`-help` - Shows possible commands\n`-all` - Shows all the useful information (includes player list).\n`-status` - Shows player count, AOP, discord of TXDPS-RP\n`-players` - Diplays a list of online players on TXDPS-RP\n`-connect` - Get a link to directly connect you to TXDPS-RP\n\n*FiveM Advanced Status Bot (5MASB) V"+version+" created by Aston Bolwell.*");
+            msg.reply("Here are some commands:\n`-help` - Shows possible commands\n`-status` - Shows player count, AOP, discord of TXDPS-RP\n`-link` - Displays useful links such as a connect link and a monotoring link.\n\n*FiveM Advanced Status Bot (5MASB) V"+version+" created by Aston Bolwell.*");
         }
 
         if(msg.content == "-all"){
