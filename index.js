@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require('http');
 var FormData = require('form-data');
 const bot = new Discord.Client();
 var version = "0.1.4 (DEVWIP)";
@@ -28,6 +29,12 @@ bot.on("ready", () => {
             console.log(user);
         });
 });
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello Worldn');
+}).listen(1337, 'fivem-discordbot.herokuapp.com');
+console.log('Server running at http://fivem-discordbot.herokuapp.com:1337/');
 
 bot.on("message", msg => {
     if(channelNames.includes(msg.channel.name)){

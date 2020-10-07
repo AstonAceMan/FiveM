@@ -11,6 +11,7 @@
   "dependencies": {
     "discord.js": "^12.3.1",
     "form-data": "^3.0.0",
+    "http": "0.0.1-security",
     "xmlhttprequest": "^1.8.0"
   }
 }
