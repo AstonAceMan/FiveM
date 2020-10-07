@@ -1,0 +1,16 @@
+{
+  "name": "fivem",
+  "version": "1.0.0",
+  "description": "FiveM Discord Bot (Unofficial)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aston Bolwell",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "form-data": "^3.0.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
