@@ -33,7 +33,7 @@ function embedInfo(data){
 		{ name: 'Information', value: '>>> **Name:** `Server 1`\n**Status:** `Online`\n**Port:** `30120`\n**Players:** `'+players+'/75`\n**AOP:** `'+aop+'`\n ', inline: true }
     );
     //embedReturn.setTimestamp();
-	embedReturn.setFooter('[Connect](fivem://connect/zobp74) or see the [playerlist](http://serverinfo.unaux.com?endpoint='+serverID+') of TXDPS-RP');
+	embedReturn.setDescription('[Connect](fivem://connect/zobp74) or see the [playerlist](http://serverinfo.unaux.com?endpoint='+serverID+') of TXDPS-RP');
     return embedReturn;
 }
 
