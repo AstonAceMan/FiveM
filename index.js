@@ -18,10 +18,22 @@ function embedInfo(data){
     embedReturn.setColor('#f78235');
     embedReturn.setTitle('TXDPS-RP');
     embedReturn.setThumbnail(thumbnail);
+
+    var playerListString = ">>> ";
+    for(var player in data['Data']['players']){
+        if(player in data['Data']['players']){
+            playerListString += data['Data']['players'][player]['id'] + " `" + data['Data']['players'][player]['name'] + "`\n";
+        }
+    }
+
+    playerListString = playerListString.substring(0,playerListString.length()-1);
+
     embedReturn.addFields(
-		{ name: 'Players', value: 'Some value here', inline: true },
+		{ name: 'Players ('+players+')', value: playerListString, inline: true },
 		{ name: 'Information', value: '>>> **Name:** `Server 1`\n**Status:** `Online`\n**Port:** `30120`\n**Players:** `'+players+'/75`\n**AOP:** `'+aop+'`\n ', inline: true }
-	)
+    );
+    //embedReturn.setTimestamp();
+	embedReturn.setFooter('[Connect](fivem://connect/zobp74) or see the [playerlist](http://serverinfo.unaux.com?endpoint='+serverID+') of TXDPS-RP');
     return embedReturn;
 }
 
@@ -30,7 +42,7 @@ async function getDiscord(userid){
     return useridgrab.avatarURL();
 }
 
-bot.login(token);
+bot.login(token);-
 
 bot.on("ready", () => {
     console.log("FiveM bot online.");
