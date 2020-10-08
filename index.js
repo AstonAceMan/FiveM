@@ -26,7 +26,7 @@ function embedInfo(data){
         }
     }
 
-    playerListString = playerListString.substring(0,playerListString.length()-1);
+    playerListString = playerListString.substring(0,playerListString.length - 1);
 
     embedReturn.addFields(
 		{ name: 'Players ('+players+')', value: playerListString, inline: true },
